@@ -1,0 +1,10 @@
+[
+    {
+        "name": "status",
+        "description": "Checking hardware server"
+    },
+    {
+        "name": "help",
+        "description": "Displaying available commands"
+    }
+]
