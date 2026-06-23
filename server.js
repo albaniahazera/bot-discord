@@ -70,7 +70,8 @@ client.on('interactionCreate', async interaction => {
         const freeMem = (os.freemem() / (1024 * 1024 * 1024)).toFixed(2);
         const usedMem = (totalMem - freeMem).toFixed(2);
         const uptime = (os.uptime() / 3600).toFixed(2);
-        const cpus = os.cpus().length;
+        const osType = os.type();
+        const osArch = os.arch();
 
         // Bikin tampilan kotak (Embed)
         const statusEmbed = new EmbedBuilder()
@@ -79,8 +80,9 @@ client.on('interactionCreate', async interaction => {
             .addFields(
                 { name: 'RAM Usage', value: `${usedMem} GB / ${totalMem} GB`, inline: true },
                 { name: 'Free RAM', value: `${freeMem} GB`, inline: true },
-                { name: 'Total CPU Cores', value: `${cpus} Cores`, inline: true },
-                { name: 'Bot Uptime', value: `${uptime} Hours`, inline: false }
+                { name: 'Bot Uptime', value: `${uptime} Hours`, inline: false },
+                { name: 'OS Type', value: osType, inline: true },
+                { name: 'OS Architecture', value: osArch, inline: true }
             )
             .setTimestamp();
 
